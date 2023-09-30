@@ -11,10 +11,16 @@ const ConnectDB = require("./src/configs/db")
 
 //middlewares 
 app.use(express.json())
-app.use(cors())
+app.use(cors()) 
 
 
 app.listen(PORT, () => {
     ConnectDB()
     console.log(`Connected on ${PORT}`)
 })
+
+
+
+
+
+
