@@ -13,9 +13,8 @@ const bcrypt = require("bcrypt")
 
 router.post("/", async (req, resp) => {
     try {
-
         //cheching the schema error
-        const {err } = validateSchema(req.body)
+        const { err } = validateSchema(req.body)
         if (err) {
             return resp.status(400).send({ Message: err.details[0].message })
         }
@@ -42,7 +41,8 @@ router.post("/", async (req, resp) => {
 
     }
     catch (err) {
-        resp.status(500).send({ Message: "Internal Server Error !" })
+        // resp.status(500).send({ Message: "Internal Server Error !" })
+        resp.status(500).send({ Message: err.message })
     }
 })
 
@@ -55,7 +55,7 @@ const validateSchema = (data) => {
         email: Joi.string().email().required().label("Email"),
         password: Joi.string().required().label("Password")
     })
-    return schema.validateSchema(data)
+    return schema.validate(data)
 }
 
 

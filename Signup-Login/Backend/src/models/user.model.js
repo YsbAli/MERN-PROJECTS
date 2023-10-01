@@ -26,12 +26,12 @@ const User = mongoose.model("user", userSchema)
 const ValidateSchema = (data) => {
     const schema = Joi.object({
         first_Name: Joi.string().required().label("First Name"),
-        last_Name: Joi.string.required().label("Last Name"),
-        email: Joi.string().required().label("Email"),
+        last_Name: Joi.string().required().label("Last Name"),
+        email: Joi.string().email().required().label("Email"),
         password: PasswordComplexity().required().label("Password")
     })
-    return schema.ValidateSchema(data)
+    return schema.validate(data)                    //validate is a inbuild function it validate the schema
 }
 
-module.exposts = { User, ValidateSchema }
+module.exports = { User, ValidateSchema }
 

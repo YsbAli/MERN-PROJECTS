@@ -4,12 +4,12 @@ const router = express.Router()
 
 require("dotenv").config()
 
+const bcrypt = require("bcrypt")
 
-const { User, ValidateSchema } = require("./models/user.model")
+
+const { User, ValidateSchema } = require("../models/user.model")
 
 router.post("/", async (req, resp) => {
-    // const user = await User.create(req.body)
-
     try {
         const { error } = ValidateSchema(req.body)
         if (error) {
@@ -17,7 +17,7 @@ router.post("/", async (req, resp) => {
         }
         const user = await User.findOne({ email: req.body.email })
         if (user) {
-            return resp.status(409).send({ message: "User with given email already exists" })
+            return resp.status(401).send({ message: "User with given email already exists" })
         }
         const salt = await bcrypt.genSalt(Number(process.env.SALT))
         const hashPassword = await bcrypt.hash(req.body.password, salt)
@@ -28,7 +28,7 @@ router.post("/", async (req, resp) => {
 
     }
     catch (err) {
-        resp.status(500).send("Internal Server Error !")
+        return resp.status(500).send({ Message: err.message })
     }
 
 })
