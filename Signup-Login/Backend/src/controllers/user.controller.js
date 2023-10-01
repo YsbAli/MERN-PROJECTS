@@ -24,7 +24,7 @@ router.post("/", async (req, resp) => {
 
         await new User({ ...req.body, password: hashPassword }).save()
 
-        resp.status(201).send(({ message: "User created Succeessfully !" }))
+        resp.status(201).send(({ message: "User Created Succeessfully !" }))
 
     }
     catch (err) {

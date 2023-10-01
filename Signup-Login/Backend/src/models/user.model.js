@@ -6,8 +6,6 @@ const Joi = require("joi")                                                      
 const PasswordComplexity = require("joi-password-complexity")                            //it Creates a Joi object that validates password complexity.
 
 
-
-
 const userSchema = new mongoose.Schema({
     first_Name: { type: String, require: true },
     last_Name: { type: String, require: true },
@@ -21,6 +19,7 @@ userSchema.methods.AuthTokenGenerete = function () {
     return token
 }
 
+
 const User = mongoose.model("user", userSchema)
 
 
@@ -33,7 +32,6 @@ const ValidateSchema = (data) => {
     })
     return schema.ValidateSchema(data)
 }
-
 
 module.exposts = { User, ValidateSchema }
 
