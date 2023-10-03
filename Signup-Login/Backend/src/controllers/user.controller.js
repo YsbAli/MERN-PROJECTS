@@ -22,7 +22,7 @@ router.post("/", async (req, resp) => {
         const salt = await bcrypt.genSalt(Number(process.env.SALT))
         const hashPassword = await bcrypt.hash(req.body.password, salt)
 
-        await new User({ ...req.body, password: hashPassword }).save()
+        await User.create({ ...req.body, password: hashPassword })
 
         resp.status(201).send(({ message: "User Created Succeessfully !" }))
 

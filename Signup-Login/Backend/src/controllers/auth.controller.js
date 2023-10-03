@@ -20,7 +20,7 @@ router.post("/", async (req, resp) => {
         }
 
         //finding  the user email from the body in the User model or User table or User Collection
-        const user = await User.findOne({ email: req.body.email })
+        const user = await User.findOne({ email: req.body.email }).lean().exec()
 
         //if user not found then error
         if (!user) {
