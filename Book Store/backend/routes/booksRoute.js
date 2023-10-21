@@ -1,5 +1,6 @@
-import express from 'express';
-import { Book } from '../models/bookModel.js';
+const express = require("express")
+
+const Book = require("../src/models/bookModel")
 
 const router = express.Router();
 
@@ -104,8 +105,7 @@ router.delete('/:id', async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 });
-
-export default router;
+module.exports = router;
 
 
 
