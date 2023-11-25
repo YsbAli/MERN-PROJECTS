@@ -1,7 +1,7 @@
 # MERN Stack Projects
 
 <div> 
-<4>Welcome to the MERN Stack Projects repository! This collection of projects showcases the power and versatility of the MERN (MongoDB, Express.js, React.js, Node.js) stack. Each project represents a unique application or feature, demonstrating the capabilities of this modern and full-stack development environment.</h4>
+Welcome to My MERN Stack Projects repository! This collection of projects showcases the power and versatility of the MERN (MongoDB, Express.js, React.js, Node.js) stack. Each project represents a unique application or feature, demonstrating the capabilities of this modern and full-stack development environment.</h4>
 </div>
 
 <h1>Projects</h1>
